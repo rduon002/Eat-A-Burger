@@ -1,48 +1,53 @@
-<div class="container">
-  <div class="header">
-    <h1>Eat A Burger <img src="/assets/img/cheeseburger.png"></h1>
-    <p>This is Eat A Burger. Home to Great Burgers.</p>
+<section class="banner">
+  <div class="column">
+    <img src="/assets/img/krusty_burger.jpg">
   </div>
+  <div class="column">
+    <img src="/assets/img/Krabby_Patty.png">
+  </div>
+  <div class="column">
+    <img src="/assets/img/umami_burger.jpg">
+</section>
 
-  <div class="row">
-    <div class="card-header">
-         Can I take your order?
-    </div>
-        <!--Create/add burger form-->
-    <div class="card-body">
-        <form class="create-form">
-        <div class="form-group">
-            <label for="burger">Place order here:</label>
-            <input type="text" class="form-control" id="burgerToGo" placeholder="Name a burger here.">
-        </div>
-        <button type="submit">Submit</button>
-        </form>
-    </div>
-
-  <div class="row">
-    <div class="card-header">Burgers</div>
-    <!--Div to hold burgers that have not been devoured yet-->
-    <div class="card-body">
-        {{#each burgers}}
-            {{#unless devoured}}
-                {{> burgers/burger-block devour=false}}
-            {{/unless}}
-        {{/each}}
-    </div>
-
-    <div class="row">
-      <div class="card-devoured">
-        <div class="card-header">
-         Devoured burgers
-        </div>
-        <!--When a burger has been devoured, put burger here-->
-        <div class="card-body">
-          {{#each burgers}}
-              {{#if devoured}}
-                {{> burgers/burger-devoured devour=true}}
-              {{/if}}
-          {{/each}}
-        </div>
+<section class="body">
+  <div class="container">
+    <div class="awaiting-burgers">
+      <div class="section-header">
+        Awaiting Burgers
+      </div>
+      <!--Div to hold burgers that have not been devoured yet-->
+      <div class="section-body">
+        {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block devour=false}} {{/unless}} {{/each}}
       </div>
     </div>
+  </div>
   
+  <div class="container">
+    <div class="devoured-burger">
+      <div class="section-header">
+        Devoured burgers
+      </div>
+      <!--When a burger has been devoured, put burger here-->
+      <div class="section-body">
+        {{#each burgers}} {{#if devoured}} {{> burgers/burger-block devour=true}} {{/if}} {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form">
+    <div class="section-header">
+      <h2>Can I take your order?</h2>
+    </div>
+    <!--Create/add burger form-->
+    <div class="form-body">
+      <form class="create-form">
+        <div class="form-group">
+          <label for="burger">What burger would you like?</label>
+          <input type="text" class="form-control" id="burgerToGo" placeholder="Name a burger here.">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  </section>

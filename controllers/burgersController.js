@@ -10,7 +10,7 @@ let burger = require("../models/burger.js");
 //Grab burgers in database
 router.get("/", function(req, res) {
     burger.selectAll(function(data) {
-      var hbsObject = {
+      let hbsObject = {
         burgers: data
       };
       console.log(hbsObject);
@@ -18,14 +18,16 @@ router.get("/", function(req, res) {
     });
   });
   //Adds burgers to database
-  router.post("/", function(req, res) {
+  //Redirects to the URL derived from the specified path, with specified status
+  router.post("/api/burgers", function(req, res) {
     burger.insertOne("burger_name",
-      req.body.name, function() {
+      req.body.burger_name, function() {
       res.redirect("/");
     });
   });
   //Update devoured burgers
-  router.put("/:id", function(req, res) {
+  //Redirects to the URL derived from the specified path, with specified status
+  router.put("/api/burgers/:id", function(req, res) {
     let condition = "id = " + req.params.id;
   
     burger.updateOne({
